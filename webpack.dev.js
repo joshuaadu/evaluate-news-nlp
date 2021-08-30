@@ -1,35 +1,68 @@
-const path = require('path')
-const webpack = require('webpack')
-const HtmlWebPackPlugin = require("html-webpack-plugin")
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const path = require("path")
+const webpack = require("webpack")
+const HtmlwebPackPlugin = require('html-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
 module.exports = {
-    entry: './src/client/index.js',
     mode: 'development',
     devtool: 'source-map',
-    stats: 'verbose',
+
+    // Tell the dev server where to look for files(Using webpack-dev-server)
+    devServer: {
+           static: './dist', //  tells webpack-dev-server to serve the files from the dist directory on localhost:8080
+            },
+
+    entry: './src/client/index.js',
+
+    output: {
+        // path: path.resolve(__dirname, 'dist'),
+
+        // webpack.CleanPlugin
+        clean: {
+            dry: true, // Log the assets that should be removed instead of deleting them.
+        },
+        libraryTarget: 'var',
+        library: 'Client'
+    },
+
     module: {
         rules: [
             {
                 test: '/\.js$/',
-                exclude: /node_modules/,
-                loader: "babel-loader"
-            }
+                exclude: '/node_modules/',
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                 // Load final css file with mini-css-extract plugin
+                  MiniCssExtractPlugin.loader,
+                  // Translates CSS into CommonJS
+                  "css-loader",
+                  // Compiles Sass to CSS
+                  "sass-loader",
+                ],
+              }
         ]
     },
+
     plugins: [
-        new HtmlWebPackPlugin({
-            template: "./src/client/views/index.html",
-            filename: "./index.html",
-        }),
-        new CleanWebpackPlugin({
-            // Simulate the removal of files
-            dry: true,
-            // Write Logs to Console
-            verbose: true,
-            // Automatically remove all unused webpack assets on rebuild
-            cleanStaleWebpackAssets: true,
-            protectWebpackAssets: false
-        })
-    ]
+        new HtmlwebPackPlugin({
+            title: 'Using Webpack For Code Development',
+            template: './src/client/views/index.html',
+            filename: './index.html',
+    }),
+        // new BundleAnalyzerPlugin(),
+
+        // This extracts CSS into separate files. It creates a CSS file per JS file which contains CSS
+        new MiniCssExtractPlugin()
+    ], 
+
+
 }
