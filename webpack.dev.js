@@ -3,6 +3,8 @@ const webpack = require("webpack")
 const HtmlwebPackPlugin = require('html-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const Dotenv = require('dotenv-webpack')
+
 
 module.exports = {
     mode: 'development',
@@ -61,7 +63,8 @@ module.exports = {
         // new BundleAnalyzerPlugin(),
 
         // This extracts CSS into separate files. It creates a CSS file per JS file which contains CSS
-        new MiniCssExtractPlugin()
+        new MiniCssExtractPlugin(),
+        new Dotenv(),
     ], 
 
 

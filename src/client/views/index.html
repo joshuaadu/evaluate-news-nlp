@@ -20,14 +20,40 @@
         <main>
             <section>
                 <form class="" onsubmit="return handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="" placeholder="Name">
+                    <input id="text" type="text" name="input" value="" placeholder="Enter text">
                     <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
                 </form>
             </section>
 
             <section>
                 <strong>Form Results:</strong>
-                <div id="results"></div>
+                <div id="results">
+                    <table>
+                        <caption>Sentiment Analysis Results</caption>
+                        <tbody>
+                            <tr class="table-row-inline">
+                                <td class="entry-title"></td>
+                                <td id="agreement"></td>
+                            </tr>
+                            <tr class="table-row-inline">
+                                <td class="entry-title"></td>
+                                <td id="subjectivity"></td>
+                            </tr>
+                            <tr class="table-row-inline">
+                                <td class="entry-title"></td>
+                                <td id="irony"></td>
+                            </tr>
+                            <tr class="table-row-block">
+                                <td class="entry-title"></td>
+                                <td id="confidence"></td>
+                            </tr>
+                            <tr class="table-row-block">
+                                <td class="entry-title"></td>
+                                <td id="score-tag"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </section>
         </main>
 
