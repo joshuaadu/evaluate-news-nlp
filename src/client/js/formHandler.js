@@ -6,7 +6,7 @@ function handleSubmit(event) {
     let formText = document.getElementById('text').value
     if(Client.checkForName(formText)) {
         const data = {text: formText}
-        Client.meaningCloudRequest(data)
+        Client.serverRequest(data)
         console.log("::: Form Submitted :::")
 
     }else {
