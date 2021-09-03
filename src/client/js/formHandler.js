@@ -2,7 +2,8 @@ function handleSubmit(event) {
     event.preventDefault()
 
     // check what text was put into the form field
-    document.querySelector('.table-body').style.display = 'none'
+    // document.querySelector('.table-body').style.display = 'none'
+    hideElements()
     let formText = document.getElementById('text').value
     if(Client.checkForName(formText)) {
         const data = {text: formText}
@@ -16,7 +17,14 @@ function handleSubmit(event) {
 
 }
 
-
+const hideElements = () => {
+    let elements = document.querySelectorAll('.hide')
+    elements = Array.from(elements)
+    elements.forEach(element => element.style.display = 'none')
+    // for( let element of elements) {
+    //     element.style.display = 'none'
+    // }
+}
 
 
 
