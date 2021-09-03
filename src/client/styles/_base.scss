@@ -1,3 +1,5 @@
+@import './variables';
+
 body {
     display: flex;
     flex-direction: column;
@@ -11,4 +13,56 @@ main {
 section {
     max-width: 800px;
     margin: 50px auto;
+}
+.form-button {
+    background-color: $primary-color;
+    color: white;
+    // border: 1px;
+}
+.result-table {
+    max-width: 30rem;
+    min-width: min-content;
+    margin: 0 auto;
+    background-color: $accent-color;
+    border: 1px solid $primary-color;
+    border-radius: 0.6rem;
+    display: grid;
+}
+caption {
+    font-size: 1.5rem;
+    padding: 2rem;
+    color: $primary-color;
+}
+tbody {
+    text-align: center;
+    padding: 0 1rem;
+    display: none;
+}
+tr {
+    // max-width: (m;
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    // color: $primary-color;
+}
+
+.data {
+    color: $result-data;
+    font-size: 1.1rem;
+}
+
+.table-row-block {
+    flex-flow: column-reverse;
+}
+
+.symbol {
+font-size: 1.5rem;
+}
+
+@media screen and (max-width: 20rem) {
+    tr{
+        flex-flow: column;
+    }
 }
