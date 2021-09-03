@@ -21,37 +21,41 @@
             <section>
                 <form class="" onsubmit="return handleSubmit(event)">
                     <input id="text" type="text" name="input" value="" placeholder="Enter text">
-                    <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
+                    <input type="submit" class="form-button" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
                 </form>
             </section>
 
             <section>
-                <strong>Form Results:</strong>
+                <!-- <strong>Form Results:</strong> -->
                 <div id="results">
-                    <table>
+                    <table class="result-table">
                         <caption>Sentiment Analysis Results</caption>
-                        <tbody>
+                        <thead>
+                            
+                        </thead>
+                        <tbody class="table-body">
                             <tr class="table-row-inline">
-                                <td class="entry-title"></td>
-                                <td id="agreement"></td>
+                                <td class="entry-title">Agreement</td>
+                                <td class="data" id="agreement"></td>
                             </tr>
                             <tr class="table-row-inline">
-                                <td class="entry-title"></td>
-                                <td id="subjectivity"></td>
+                                <td class="entry-title">Subjectivity</td>
+                                <td class="data" id="subjectivity"></td>
                             </tr>
                             <tr class="table-row-inline">
-                                <td class="entry-title"></td>
-                                <td id="irony"></td>
+                                <td class="entry-title">Irony</td>
+                                <td class="data" id="irony"></td>
                             </tr>
                             <tr class="table-row-block">
-                                <td class="entry-title"></td>
-                                <td id="confidence"></td>
+                                <td class="entry-title">Confidence</td>
+                                <td class="data symbol" id="confidence"></td>
                             </tr>
                             <tr class="table-row-block">
-                                <td class="entry-title"></td>
-                                <td id="score-tag"></td>
+                                <td class="entry-title">Score tag</td>
+                                <td class="data symbol" id="score-tag"></td>
                             </tr>
                         </tbody>
+                        <!-- <tfoot>Source: <a href="https://www.meaningcloud.com/">Meaning Cloud</a></tfoot> -->
                     </table>
                 </div>
             </section>
@@ -60,6 +64,16 @@
         <footer>
             <p>This is a footer</p>
         </footer>
-
+        <script>
+            if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js').then(registration => {
+        console.log('SW registered: ', registration);
+    }).catch(registrationError => {
+    console.log('SW registration failed: ', registrationError);
+    });
+    });
+}
+        </script>
     </body>
 </html>
