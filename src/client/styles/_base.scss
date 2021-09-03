@@ -61,6 +61,14 @@ tr {
 font-size: 1.5rem;
 }
 
+.result-error-message {
+    max-width: 30rem;
+    display: none;
+    color: red;
+    margin: 1rem auto;
+    line-height: 1.5rem;
+}
+
 @media screen and (max-width: 20rem) {
     tr{
         flex-flow: column;

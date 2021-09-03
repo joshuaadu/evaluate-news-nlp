@@ -23,7 +23,11 @@ const meaningCloudRequest = async (url) => {
     try {
         const result = await response.json()
         console.log(result)
-        updateUI(result)
+        if(result.status.code == 0) {
+            updateUI(result)
+        } else {
+            document.querySelector('.result-error-message').style.display = 'block'
+        }
     } catch (error) {
         console.log('error', error)
     }

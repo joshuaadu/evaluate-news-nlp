@@ -6,7 +6,7 @@ function handleSubmit(event) {
     let formText = document.getElementById('text').value
     if(Client.checkForName(formText)) {
         const data = {text: formText}
-        Client.serverRequest(data)
+        console.log(!Client.serverRequest(data))// document.querySelector('.result-error-message').style.display = 'none'
         console.log("::: Form Submitted :::")
 
     }else {
