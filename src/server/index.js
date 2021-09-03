@@ -32,24 +32,16 @@ app.get('/test', function (req, res) {
 })
 
 
-//  formdata.append('key', process.env.MeaningCloudAPI);
-//  formdata.append('url', url);
-//  formdata.append('lang', 'en');  // 2-letter code, like en es fr ...
-
-
 app.post('/result', async (req, res) => {
     const apiKey = process.env.MeaningCloudAPI
-    const lang = 'en'
     console.log(req.body, apiKey)
     const response = await fetch(`https://api.meaningcloud.com/sentiment-2.1?key=${apiKey}&url=${req.body.text}&lang=en`);
     try {
         // console.log(response.json())
         const result = await response.json()
-        console.log(result.confidence)
+        // console.log(result.confidence)
         res.send(result)
     } catch (error) {
         console.log('error', error)
     }
-
-
 })
